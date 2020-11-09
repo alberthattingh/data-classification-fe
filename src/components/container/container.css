@@ -1,0 +1,61 @@
+div.overlay {
+    position: absolute;
+    background: rgba(255, 0, 0, 0);
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.overlay div.container {
+    opacity: 1;
+    background-color: #424B54;
+    /*background: rgb(53,147,219);*/
+    /*background: linear-gradient(to right, rgba(53,147,219,1) 0%, rgba(1,40,83,1) 100%);*/
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    padding: 25px;
+}
+
+div.overlay div.container div.content {
+    /*background: rgba(0, 255, 0, 0.5);*/
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+/*
+ * For Mobile (smaller screen sizes)
+ */
+div.overlay div.container {
+    width: 60%;
+    height: 70%;
+}
+
+/*
+ * For Tablets (medium screen sizes)
+ */
+@media only screen and (min-width: 768px) {
+    div.overlay div.container {
+        width: 50%;
+        height: 50%;
+    }
+}
+
+/*
+ * For Desktop (larger screen sizes)
+ */
+@media only screen and (min-width: 992px) {
+    div.overlay div.container {
+        width: 60%;
+        height: 60%;
+    }
+}
