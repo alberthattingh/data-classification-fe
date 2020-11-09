@@ -26,6 +26,9 @@ class Login extends React.Component {
                     <div className="submitDiv">
                         <input className="submitBtn" type="submit"/>
                     </div>
+                    <div className="form-group new-acc">
+                        <a href="#">I don't have an account</a>
+                    </div>
                 </form>
             </div>
         );
