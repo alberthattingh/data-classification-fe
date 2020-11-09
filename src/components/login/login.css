@@ -27,6 +27,11 @@ form {
     width: 100%;
 }
 
+.new-acc {
+    margin-top: 5%;
+    margin-bottom: 0;
+}
+
 input {
     height: 4vh;
 }
