@@ -43,8 +43,24 @@ class Login extends React.Component {
         };
 
         fetch("https://dcs-backend.herokuapp.com/users/login", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
+            .then(response => {
+                if (response.status === 200) {
+                    return response.text();
+
+                }
+                else {
+                    alert("Invalid login details");
+                    return null;
+                }
+            })
+            .then(result => {
+                if (result != null) {
+                    this.props.pageHandler(2, JSON.parse(result));
+                }
+                else {
+                    console.log("RESULT IS NULL");
+                }
+            })
             .catch(error => console.log('error', error));
     }
 

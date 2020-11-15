@@ -1,22 +1,30 @@
 import React from "react";
 import './container.css';
 import Login from '../login/login'
+import Main from "../main/main";
 
 class Container extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            pageNumber: props.pageNum,
-            pageHandler: props.pageHandler,
-            data: null
-        };
+        this.pageHandler = this.pageHandler.bind(this);
+        this.state = {pageNumber: 1, token: null};
         // console.log("State updated!");
+    }
+
+    // Handler to update page number and essentially the content shown
+    pageHandler(page, token) {
+        this.setState({pageNumber: page, token: token['access_token']}, () => {
+            // console.log("Page: " + page + "\nToken: " + token['access_token']);
+        });
     }
 
     contentSelector() {
         // console.log(this.state.pageNumber + " - " + this.props.pageNum);
-        if (this.props.pageNum === 1) {
+        if (this.state.pageNumber === 1) {
             return Login;
+        }
+        else if (this.state.pageNumber === 2) {
+            return Main;
         }
         else {
             return null;
@@ -34,7 +42,7 @@ class Container extends React.Component {
             <div className="overlay">
                 <div className="container">
                     <div className="content">
-                        <Login />
+                        <Content pageHandler={this.pageHandler} token={this.state.token} />
                     </div>
                 </div>
             </div>
