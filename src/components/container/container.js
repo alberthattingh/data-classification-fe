@@ -14,7 +14,7 @@ class Container extends React.Component {
     }
 
     contentSelector() {
-        console.log(this.state.pageNumber + " - " + this.props.pageNum);
+        // console.log(this.state.pageNumber + " - " + this.props.pageNum);
         if (this.props.pageNum === 1) {
             return Login;
         }
