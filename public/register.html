@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account | ClassifyThis</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="cover"></div>
+    <div class="overlay">
+        <div class="container">
+            <div id="loader"></div>
+            <div id="content" class="content">
+                <div class="register-page">
+                    <h1>Register</h1>
+                    <div class="sign-up">
+                        <form name="signupForm" onSubmit="return onFormSubmit();" class="signupForm">
+                            <div class="form-group">
+                                <label htmlFor="">Username</label>
+                                <input name="user" type="text" required />
+                            </div>
+                            <div class="form-group">
+                                <label htmlFor="">Password</label>
+                                <input name="pass" type="password" required />
+                            </div>
+                            <div class="form-group">
+                                <label htmlFor="">Confirm password</label>
+                                <input name="confirmPass" type="password" required />
+                            </div>
+                            <div class="submitDiv">
+                                <input class="submitBtn" type="submit"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="register.js" ></script>
+
+</body>
+</html>

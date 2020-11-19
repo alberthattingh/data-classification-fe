@@ -1,0 +1,212 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #d76531;
+    font-size: 62.5%;
+    margin: 0 0 0 0;
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+
+div.cover {
+    background-image: url("background.jpg");
+    margin: 0;
+    background-size: cover;
+    height: 50vh;
+    width: 100vw;
+}
+
+div.overlay {
+    position: absolute;
+    background: rgba(255, 0, 0, 0);
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.overlay div.container {
+    opacity: 1;
+    background-color: #424B54;
+    /*background: rgb(53,147,219);*/
+    /*background: linear-gradient(to right, rgba(53,147,219,1) 0%, rgba(1,40,83,1) 100%);*/
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    padding: 25px;
+}
+
+div.overlay div.container div.content {
+    /*background: rgba(0, 255, 0, 0.5);*/
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+/*
+ * For Mobile (smaller screen sizes)
+ */
+div.overlay div.container {
+    width: 60%;
+    height: 70%;
+}
+
+/*
+ * For Tablets (medium screen sizes)
+ */
+/*@media only screen and (min-width: 768px) {*/
+/*    div.overlay div.container {*/
+/*        width: 50%;*/
+/*        height: 50%;*/
+/*    }*/
+/*}*/
+
+/*
+ * For Desktop (larger screen sizes)
+ */
+@media only screen and (min-width: 992px) {
+    div.overlay div.container {
+        width: 60%;
+        height: 60%;
+    }
+}
+
+div.register-page {
+    width: 100%;
+    height: 100%;
+}
+
+div.register-page h1 {
+    color: white;
+    font-size: 2rem;
+    margin-top: -1.5%;
+}
+
+.sign-up {
+    margin-top: 0;
+    padding-top: 0;
+    text-align: left;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.2rem;
+    color: white;
+}
+
+form {
+    /*background: rgba(255, 0, 0, 0.5);*/
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    margin-bottom: 10%;
+    width: 100%;
+}
+
+.new-acc {
+    margin-top: 5%;
+    margin-bottom: 0;
+}
+
+input {
+    height: 4vh;
+}
+
+label {
+    margin-bottom: 1%;
+}
+
+.submitDiv {
+    width: 30%;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submitBtn {
+    min-width: fit-content;
+    width: 90%;
+    height: 90%;
+    border-radius: 50px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.submitBtn:hover {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+#loader {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 }
+    to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom {
+    from{ bottom:-100px; opacity:0 }
+    to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+    display: none;
+    text-align: center;
+}
