@@ -19,7 +19,7 @@ function DataTable(props) {
                                type="checkbox"
                                checked={field.isClassified} /></td>
                     <td><input onChange={(e) => props.textHandler(e, field.number)}
-                               value={field.classifiedAs !== null ? field.classifiedAs : ""}
+                               value={field.category !== null ? field.category : ""}
                                type="text"/></td>
                 </tr>
             );
@@ -33,7 +33,7 @@ function DataTable(props) {
                 <th>ID</th>
                 <th>Field Value</th>
                 <th>Is Protected</th>
-                <th>Classified As</th>
+                <th>Category</th>
             </tr>
             </thead>
             <tbody>
@@ -53,13 +53,35 @@ class Revise extends React.Component {
         this.onCheckboxChange = this.onCheckboxChange.bind(this);
         this.state = {
             loading: false,
-            dataArray: props.data
+            dataArray: props.data.data,
+            filename: props.data.filename
         }
     }
 
     onFormSubmit(event) {
         event.preventDefault();
+        this.setState({loading: true});
 
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer " + this.props.token);
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({filename: this.state.filename, data: this.state.dataArray});
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("https://dcs-backend.herokuapp.com/save", requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                this.setState({loading: false});
+                // console.log(result);
+            })
+            .catch(error => console.log('error', error));
     }
 
     onTextChange(event, fieldNumber) {
@@ -71,7 +93,7 @@ class Revise extends React.Component {
 
             for (let j = 0; j < data[i].length; j++) {
                 if (data[i][j].number === fieldNumber) {
-                    data[i][j].classifiedAs = event.target.value === "" ? null : event.target.value;
+                    data[i][j].category = event.target.value === "" ? null : event.target.value;
                     done = true;
                     break;
                 }
