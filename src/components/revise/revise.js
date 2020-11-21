@@ -53,13 +53,35 @@ class Revise extends React.Component {
         this.onCheckboxChange = this.onCheckboxChange.bind(this);
         this.state = {
             loading: false,
-            dataArray: props.data
+            dataArray: props.data.data,
+            filename: props.data.filename
         }
     }
 
     onFormSubmit(event) {
         event.preventDefault();
+        this.setState({loading: true});
 
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer " + this.props.token);
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({filename: this.state.filename, data: this.state.dataArray});
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("https://dcs-backend.herokuapp.com/save", requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                this.setState({loading: false});
+                // console.log(result);
+            })
+            .catch(error => console.log('error', error));
     }
 
     onTextChange(event, fieldNumber) {
