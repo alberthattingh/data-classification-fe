@@ -19,7 +19,7 @@ function DataTable(props) {
                                type="checkbox"
                                checked={field.isClassified} /></td>
                     <td><input onChange={(e) => props.textHandler(e, field.number)}
-                               value={field.classifiedAs !== null ? field.classifiedAs : ""}
+                               value={field.category !== null ? field.category : ""}
                                type="text"/></td>
                 </tr>
             );
@@ -33,7 +33,7 @@ function DataTable(props) {
                 <th>ID</th>
                 <th>Field Value</th>
                 <th>Is Protected</th>
-                <th>Classified As</th>
+                <th>Category</th>
             </tr>
             </thead>
             <tbody>
@@ -93,7 +93,7 @@ class Revise extends React.Component {
 
             for (let j = 0; j < data[i].length; j++) {
                 if (data[i][j].number === fieldNumber) {
-                    data[i][j].classifiedAs = event.target.value === "" ? null : event.target.value;
+                    data[i][j].category = event.target.value === "" ? null : event.target.value;
                     done = true;
                     break;
                 }
