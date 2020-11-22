@@ -13,9 +13,21 @@ class Main extends React.Component {
         }
     }
 
+    validFileType(file) {
+        if (file == null) {
+            return false;
+        }
+        return file.name.endsWith(".xlsx") || file.name.endsWith(".txt") || file.name.endsWith(".csv");
+    }
+
     onFormSubmit(event) {
         event.preventDefault();
         const file = this.fileInput.current.files[0];
+
+        if (!this.validFileType(file)) {
+            alert("The file type is not support. Try uploading an Excel, text, or CSV file.");
+            return;
+        }
 
         this.setState({loading: true}, () => {
             var myHeaders = new Headers();
@@ -46,7 +58,7 @@ class Main extends React.Component {
                 })
                 .then(result => {
                     if (result != null) {
-                        this.props.pageHandler(3, {access_token: this.props.token}, JSON.parse(result));
+                        this.props.pageHandler(4, {access_token: this.props.token}, JSON.parse(result));
                     }
                     else {
                         console.log("RESULT IS NULL");
@@ -72,7 +84,14 @@ class Main extends React.Component {
                             <label className="main" htmlFor="">Upload a file to classify</label>
                             <input className="uploadButton" type="file" ref={this.fileInput} />
                         </div>
-                        {/*<div id="loader"></div>*/}
+                        <div className="info">
+                            As of date the following file types are supported:
+                            <ul>
+                                <li>CSV files</li>
+                                <li>Text files (with fields separated by pipes)</li>
+                                <li>Excel files (.xlsx only)</li>
+                            </ul>
+                        </div>
                         <div className="submitDiv">
                             <input className="submitBtn" type="submit" />
                         </div>

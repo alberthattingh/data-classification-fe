@@ -3,6 +3,8 @@ import './container.css';
 import Login from '../login/login'
 import Main from "../main/main";
 import Revise from "../revise/revise";
+import Home from "../home/home";
+import View from "../view/view";
 
 class Container extends React.Component {
     constructor(props) {
@@ -29,10 +31,16 @@ class Container extends React.Component {
             return Login;
         }
         else if (this.state.pageNumber === 2) {
-            return Main;
+            return Home;
         }
         else if (this.state.pageNumber === 3) {
+            return Main;
+        }
+        else if (this.state.pageNumber === 4) {
             return Revise;
+        }
+        else if (this.state.pageNumber === 5) {
+            return View;
         }
         else {
             return null;

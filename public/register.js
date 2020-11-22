@@ -64,6 +64,10 @@ function postNewUser(username, password) {
                 alert("Account created successfully");
                 window.history.back();
             }
+            else if (response.status === 400) {
+                toggleLoader(false);
+                alert("Username already taken. Please try a different username.");
+            }
             else {
                 toggleLoader(false);
                 alert("Error " + response.status + ": Something went wrong");
