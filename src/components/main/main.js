@@ -58,7 +58,7 @@ class Main extends React.Component {
                 })
                 .then(result => {
                     if (result != null) {
-                        this.props.pageHandler(3, {access_token: this.props.token}, JSON.parse(result));
+                        this.props.pageHandler(4, {access_token: this.props.token}, JSON.parse(result));
                     }
                     else {
                         console.log("RESULT IS NULL");

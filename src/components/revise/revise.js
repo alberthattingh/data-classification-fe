@@ -79,6 +79,8 @@ class Revise extends React.Component {
             .then(response => response.text())
             .then(result => {
                 this.setState({loading: false});
+                alert("The classified data has been saved");
+                this.props.pageHandler(2, {access_token: this.props.token}, null)
                 // console.log(result);
             })
             .catch(error => console.log('error', error));
@@ -103,7 +105,7 @@ class Revise extends React.Component {
         }
 
         this.setState({dataArray: data}, () => {
-            console.log(this.state.dataArray);
+            // console.log(this.state.dataArray);
         });
     }
 
