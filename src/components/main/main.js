@@ -25,7 +25,7 @@ class Main extends React.Component {
         const file = this.fileInput.current.files[0];
 
         if (!this.validFileType(file)) {
-            alert("The file type is not support. Try uploading an Excel, text, or CSV file.");
+            alert("The file type is not supported. Try uploading an Excel, text, or CSV file.");
             return;
         }
 
